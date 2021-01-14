@@ -32,18 +32,18 @@ void draw_fractal(int **fractal, int width, int height){
 char *in_filename;
 
 int main(int argc, char **argv) {
-    printf("%s", argv[1]);
-    // int row, col, i;
+    printf("%s \n", argv[1]);
+    int row, col, i;
 
-    // if (argc < 2) {
-    //     fprintf(stderr, "Usage: %s [J/M] [options]\n", argv[0]);
-    //     return 1;
-    // } else {
-    //     int mode = UNKNOWN_MODE;
+    if (argc < 2) {
+        fprintf(stderr, "Usage: %s [J/M] [options]\n", argv[0]);
+        return 1;
+    } else {
+        int mode = UNKNOWN_MODE;
         
-    //     in_filename = argv[1];
-    //     printf("%s", argv[1]);
-    //     // printf("%c", in_filename);
+        in_filename = argv[1];
+        printf("%s \n", argv[1]);
+        printf("%c", in_filename);
     //     // FILE *file = fopen(in_filename, "r");
 
     //     char *mode_sel;
