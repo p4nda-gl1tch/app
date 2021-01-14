@@ -54,7 +54,7 @@ int main(int argc, char **argv) {
     int y_max;
     int d;
     int tmp2;
-    double tmp1
+    double tmp1;
 
     in_filename = argv[1];
     FILE *file = fopen(in_filename, "r");
