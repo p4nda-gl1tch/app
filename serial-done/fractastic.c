@@ -94,39 +94,39 @@ int main(int argc, char **argv) {
 
         int iterations = 0, color = 0;
 
-        int** fractal = (int**)malloc(height * sizeof(int*));
+        // int** fractal = (int**)malloc(height * sizeof(int*));
 
-        for (i=0; i<height; i++) {
-            fractal[i] = (int*)malloc(width * sizeof(int));
-        }
-        for (row = 0; row < height; row++) {
-            for (col = 0; col < width; col++) {
-                x0 = x_min + col * x_step;
-                y0 = y_max - row * y_step;
-                z0 = x0 + y0 * I;
+        // for (i=0; i<height; i++) {
+        //     fractal[i] = (int*)malloc(width * sizeof(int));
+        // }
+        // for (row = 0; row < height; row++) {
+        //     for (col = 0; col < width; col++) {
+        //         x0 = x_min + col * x_step;
+        //         y0 = y_max - row * y_step;
+        //         z0 = x0 + y0 * I;
 
-                if (mode == JULIA_MODE) {
-                    iterations = julia(complex_polynomial,
-                                       z0,
-                                       parameters,
-                                       &fc);
-                } else if (mode == MANDELBROT_MODE) {
-                    iterations = generalized_mandelbrot(complex_polynomial,
-                                                        z0,
-                                                        parameters,
-                                                        0,
-                                                        &fc);
-                }
-                if (iterations == CONVERGE) {
-                    color = 255;
-                } else {
-                    color = color_multiplier * iterations;
-                }
+        //         if (mode == JULIA_MODE) {
+        //             iterations = julia(complex_polynomial,
+        //                                z0,
+        //                                parameters,
+        //                                &fc);
+        //         } else if (mode == MANDELBROT_MODE) {
+        //             iterations = generalized_mandelbrot(complex_polynomial,
+        //                                                 z0,
+        //                                                 parameters,
+        //                                                 0,
+        //                                                 &fc);
+        //         }
+        //         if (iterations == CONVERGE) {
+        //             color = 255;
+        //         } else {
+        //             color = color_multiplier * iterations;
+        //         }
 
-                fractal[row][col] = color;
-            }
-        }
-		draw_fractal(fractal, width, height);
+        //         fractal[row][col] = color;
+        //     }
+        // }
+		// draw_fractal(fractal, width, height);
         return 0;
     }
 }
