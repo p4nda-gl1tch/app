@@ -63,13 +63,13 @@ int main(int argc, char **argv) {
             return 4;
         }
 
-        const int width, height; 
-        const double x_min;
-        const double x_max;
-        const double y_min;
-        const double y_max;
-        const int max_iterations, color_multiplier; 
-        const double d;
+         int width, height; 
+         double x_min;
+         double x_max;
+         double y_min;
+         double y_max;
+         int max_iterations, color_multiplier; 
+         double d;
         // const char *name;
       
         double tmp1, tmp2;
