@@ -61,7 +61,7 @@ int main(int argc, char **argv) {
     printf("%s \n", argv[1]);
 
     // fscanf(file, "%d %d %d %lf %lf %lf %lf %lf %d %d %lf %lf %lf ", &mode_sel, &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
-    fscanf(file, "%d %d %d %d %d %d %d %d %d %d %lf %d %d ", &mode_sel, &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
+    fscanf(file, "%d %d %d %d %d %d %d %d %lf %d %d", &mode_sel, &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
 
     printf("%s \n", argv[1]);
     if (argc < 2) {
