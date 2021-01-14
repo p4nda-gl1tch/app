@@ -37,7 +37,7 @@ int main(int argc, char **argv) {
 
     int width, height; 
 
-    int mode_sel = 0;
+    int mode_sel;
     int max_iterations, color_multiplier; 
     
     double x_min;
@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
     FILE *file = fopen(in_filename, "r");
     printf("%s \n", argv[1]);
 
-    fscanf(file, "%d %d %d %lf %lf %lf %lf %lf %d %d %lf %lf %lf ", &mode_sel &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
+    fscanf(file, "%d %d %d %lf %lf %lf %lf %lf %d %d %lf %lf %lf ", &mode_sel, &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
     
     printf("%s \n", argv[1]);
     if (argc < 2) {
