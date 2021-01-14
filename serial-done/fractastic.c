@@ -44,7 +44,7 @@ int main(int argc, char **argv) {
         in_filename = argv[1];
         printf("%s \n", argv[1]);
         printf("%c", in_filename);
-        // FILE *file = fopen(in_filename, "r");
+        FILE *file = fopen(in_filename, "r");
 
         char *mode_sel;
         fscanf(file, "%c", mode_sel);
