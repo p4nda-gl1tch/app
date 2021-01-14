@@ -44,7 +44,7 @@ int main(int argc, char **argv) {
     double tmp1, tmp2;
 
     in_filename = argv[1];
-    FILE *file = fopen(in_filename, "r")
+    FILE *file = fopen(in_filename, "r");
 
     fscanf(file, "%c %lf %lf %lf %lf %lf %lf %lf %lf %lf %lf %d ", &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
     if (argc < 2) {
@@ -56,7 +56,6 @@ int main(int argc, char **argv) {
         
         printf("%s \n", argv[1]);
         printf("%c", in_filename);
-        ;
 
         char *mode_sel;
         fscanf(file, "%c", mode_sel);
