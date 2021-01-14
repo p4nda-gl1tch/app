@@ -48,7 +48,7 @@ int main(int argc, char **argv) {
     FILE *file = fopen(in_filename, "r");
     printf("%s \n", argv[1]);
 
-    fscanf(file, "%c %lf %lf %lf %lf %lf %lf %lf %lf %lf %lf %d ", mode_sel &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
+    fscanf(file, "%d %lf %lf %lf %lf %lf %lf %lf %lf %lf %lf %d ", mode_sel &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
     
     printf("%s \n", argv[1]);
     if (argc < 2) {
@@ -61,10 +61,10 @@ int main(int argc, char **argv) {
         printf("%s \n", argv[1]);
         printf("%s", mode_sel);
 
-        if (strcmp(mode_sel, "J") == 0) {
+        if (mode_sel == 0) {
             mode = JULIA_MODE;
             printf("julia");
-        } else if (strcmp(mode_sel, "M") == 0) {
+        } else if (mode_sel == 1) {
             mode = MANDELBROT_MODE;
         }
 
