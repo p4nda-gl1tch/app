@@ -32,7 +32,7 @@ void draw_fractal(int **fractal, int width, int height){
 char *in_filename;
 
 int main(int argc, char **argv) {
-
+    printf("%s", argv[1]);
     int row, col, i;
 
     if (argc < 2) {
@@ -43,11 +43,11 @@ int main(int argc, char **argv) {
         
         in_filename = argv[1];
         printf("%s", argv[1]);
-        printf("%c", in_filename);
-        FILE *file = fopen(in_filename, "r");
+        // printf("%c", in_filename);
+        // FILE *file = fopen(in_filename, "r");
 
         char *mode_sel;
-        fscanf(file, "%c", mode_sel);
+        // fscanf(file, "%c", mode_sel);
         if (strcmp(mode_sel, "J") == 0) {
             mode = JULIA_MODE;
             printf("julia");
