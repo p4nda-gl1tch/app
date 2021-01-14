@@ -80,7 +80,9 @@ int main(int argc, char **argv) {
 
         const double c_re = mode == JULIA_MODE ? tmp1 : 0;
         const double c_im = mode == JULIA_MODE ? tmp2 : 0;
-        const char *d;
+        const double d;
+        const char *name;
+        fscanf(file, "%s", name);
         fscanf(file, "%d", d);
 
 
@@ -130,7 +132,7 @@ int main(int argc, char **argv) {
                 fractal[row][col] = color;
             }
         }
-		draw_fractal(fractal, d, width, height);
+		draw_fractal(fractal, name, width, height);
         return 0;
     }
 }
