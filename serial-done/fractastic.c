@@ -45,8 +45,9 @@ int main(int argc, char **argv) {
 
     in_filename = argv[1];
     FILE *file = fopen(in_filename, "r");
-
+    printf("%s \n", argv[1]);
     fscanf(file, "%c %lf %lf %lf %lf %lf %lf %lf %lf %lf %lf %d ", &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
+    printf("%s \n", argv[1]);
     if (argc < 2) {
         fprintf(stderr, "Usage: %s [J/M] [options]\n", argv[0]);
         return 1;
