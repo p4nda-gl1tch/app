@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
     double x_max;
     double y_min;
     double y_max;
-    char *mode_sel;
+    int mode_sel;
     int max_iterations, color_multiplier; 
     double d;
     double tmp1, tmp2;
