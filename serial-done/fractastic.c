@@ -41,6 +41,10 @@ int main(int argc, char **argv) {
     double y_max;
     int max_iterations, color_multiplier; 
     double d;
+    double tmp1, tmp2;
+
+    in_filename = argv[1];
+    FILE *file = fopen(in_filename, "r")
 
     fscanf(file, "%c %lf %lf %lf %lf %lf %lf %lf %lf %lf %lf %d ", &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
     if (argc < 2) {
@@ -49,10 +53,10 @@ int main(int argc, char **argv) {
     } else {
         int mode = UNKNOWN_MODE;
         
-        in_filename = argv[1];
+        
         printf("%s \n", argv[1]);
         printf("%c", in_filename);
-        FILE *file = fopen(in_filename, "r");
+        ;
 
         char *mode_sel;
         fscanf(file, "%c", mode_sel);
@@ -79,7 +83,7 @@ int main(int argc, char **argv) {
          
         // const char *name;
       
-        double tmp1, tmp2;
+    
 
         fscanf(file, "%c %d %d ", &width, &height);
        // printf("%c %lf %lf %lf %lf %lf %lf %lf %lf %lf %lf %d", width, height, x_min, x_max, y_min, y_max, max_iterations, color_multiplier, tmp1, tmp2, d);
