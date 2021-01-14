@@ -42,6 +42,7 @@ int main(int argc, char **argv) {
         int mode = UNKNOWN_MODE;
         
         in_filename = argv[1];
+        printf("%c", in_filename);
         FILE *file = fopen(in_filename, "r");
 
         char *mode_sel;
