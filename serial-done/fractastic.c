@@ -33,49 +33,49 @@ char *in_filename;
 
 int main(int argc, char **argv) {
     printf("%s", argv[1]);
-    int row, col, i;
+    // int row, col, i;
 
-    if (argc < 2) {
-        fprintf(stderr, "Usage: %s [J/M] [options]\n", argv[0]);
-        return 1;
-    } else {
-        int mode = UNKNOWN_MODE;
+    // if (argc < 2) {
+    //     fprintf(stderr, "Usage: %s [J/M] [options]\n", argv[0]);
+    //     return 1;
+    // } else {
+    //     int mode = UNKNOWN_MODE;
         
-        in_filename = argv[1];
-        printf("%s", argv[1]);
-        // printf("%c", in_filename);
-        // FILE *file = fopen(in_filename, "r");
+    //     in_filename = argv[1];
+    //     printf("%s", argv[1]);
+    //     // printf("%c", in_filename);
+    //     // FILE *file = fopen(in_filename, "r");
 
-        char *mode_sel;
-        // fscanf(file, "%c", mode_sel);
-        if (strcmp(mode_sel, "J") == 0) {
-            mode = JULIA_MODE;
-            printf("julia");
-        } else if (strcmp(mode_sel, "M") == 0) {
-            mode = MANDELBROT_MODE;
-        }
+    //     char *mode_sel;
+    //     fscanf(file, "%c", mode_sel);
+    //     if (strcmp(mode_sel, "J") == 0) {
+    //         mode = JULIA_MODE;
+    //         printf("julia");
+    //     } else if (strcmp(mode_sel, "M") == 0) {
+    //         mode = MANDELBROT_MODE;
+    //     }
 
-        if (mode == UNKNOWN_MODE) {
-            fprintf(stderr, "Unrecognized mode from config file");
-            return 2;
-        } else if (mode == JULIA_MODE && argc != 2) {
-            fprintf(stderr, "Usage: %s config file\n", argv[0]);
-            return 3;
-        } else if (mode == MANDELBROT_MODE && argc != 2) {
-            fprintf(stderr, "Usage: %s config file\n", argv[0]);
-            return 4;
-        }
+    //     if (mode == UNKNOWN_MODE) {
+    //         fprintf(stderr, "Unrecognized mode from config file");
+    //         return 2;
+    //     } else if (mode == JULIA_MODE && argc != 2) {
+    //         fprintf(stderr, "Usage: %s config file\n", argv[0]);
+    //         return 3;
+    //     } else if (mode == MANDELBROT_MODE && argc != 2) {
+    //         fprintf(stderr, "Usage: %s config file\n", argv[0]);
+    //         return 4;
+    //     }
 
-         int width, height; 
-         double x_min;
-         double x_max;
-         double y_min;
-         double y_max;
-         int max_iterations, color_multiplier; 
-         double d;
-        // const char *name;
+    //      int width, height; 
+    //      double x_min;
+    //      double x_max;
+    //      double y_min;
+    //      double y_max;
+    //      int max_iterations, color_multiplier; 
+    //      double d;
+    //     // const char *name;
       
-        double tmp1, tmp2;
+        // double tmp1, tmp2;
 
         // fscanf(file, "%d %d ", &width, &height);
        // printf("%lf %lf %lf %lf %lf %lf %lf %lf %lf %lf %d", width, height, x_min, x_max, y_min, y_max, max_iterations, color_multiplier, tmp1, tmp2, d);
@@ -132,4 +132,4 @@ int main(int argc, char **argv) {
 		// draw_fractal(fractal, width, height);
         return 0;
     }
-}
+// }
