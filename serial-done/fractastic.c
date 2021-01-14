@@ -74,7 +74,7 @@ int main(int argc, char **argv) {
       
         double tmp1, tmp2;
 
-        fscanf(file, "%lf %lf %lf %lf %lf %lf %lf %lf %lf %lf %d", &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
+        fscanf(file, "%d %d %ld %d %d %d %lf %lf %lf %lf %d", &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
        // printf("%lf %lf %lf %lf %lf %lf %lf %lf %lf %lf %d", width, height, x_min, x_max, y_min, y_max, max_iterations, color_multiplier, tmp1, tmp2, d);
 
         const double c_re = mode == JULIA_MODE ? tmp1 : 0;
