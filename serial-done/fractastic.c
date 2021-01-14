@@ -44,16 +44,16 @@ int main(int argc, char **argv) {
         in_filename = argv[1];
         printf("%s \n", argv[1]);
         printf("%c", in_filename);
-    //     // FILE *file = fopen(in_filename, "r");
+        // FILE *file = fopen(in_filename, "r");
 
-    //     char *mode_sel;
-    //     fscanf(file, "%c", mode_sel);
-    //     if (strcmp(mode_sel, "J") == 0) {
-    //         mode = JULIA_MODE;
-    //         printf("julia");
-    //     } else if (strcmp(mode_sel, "M") == 0) {
-    //         mode = MANDELBROT_MODE;
-    //     }
+        char *mode_sel;
+        fscanf(file, "%c", mode_sel);
+        if (strcmp(mode_sel, "J") == 0) {
+            mode = JULIA_MODE;
+            printf("julia");
+        } else if (strcmp(mode_sel, "M") == 0) {
+            mode = MANDELBROT_MODE;
+        }
 
     //     if (mode == UNKNOWN_MODE) {
     //         fprintf(stderr, "Unrecognized mode from config file");
