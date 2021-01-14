@@ -82,9 +82,9 @@ int main(int argc, char **argv) {
         const double c_im = mode == JULIA_MODE ? tmp2 : 0;
         const double d;
         const char *name;
-        fscanf(file, "%s", name);
+      
         fscanf(file, "%d", d);
-
+        fscanf(file, "%s", name);
 
         const double x_step = (x_max - x_min) / width;
         const double y_step = (y_max - y_min) / height;
