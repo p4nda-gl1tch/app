@@ -80,7 +80,7 @@ int main(int argc, char **argv) {
 
         const double c_re = mode == JULIA_MODE ? tmp1 : 0;
         const double c_im = mode == JULIA_MODE ? tmp2 : 0;
-        const double d;
+        const char *d;
         fscanf(file, "%d", d);
 
 
