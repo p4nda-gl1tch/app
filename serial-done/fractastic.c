@@ -69,9 +69,12 @@ int main(int argc, char **argv) {
         const double y_min;
         const double y_max;
         const int max_iterations, color_multiplier; 
+        const double d;
+        const char *name;
+      
         double tmp1, tmp2;
 
-        fscanf(file, "%d %d %d %d %d %d %d %d %f %f %d %c", width, height, x_min, x_max, y_min, y_max. max_iterations, color_multiplier, tmp1, tmp2, d, name);
+        fscanf(file, "%d %d %d %d %d %d %d %d %f %f %d %c", width, height, x_min, x_max, y_min, y_max, max_iterations, color_multiplier, tmp1, tmp2, d, name);
         // fscanf(file, "%d %d %d %d", x_min, x_max, y_min, y_max);
         // fscanf(file, "%d", max_iterations);
         // fscanf(file, "%d", color_multiplier);
@@ -80,9 +83,7 @@ int main(int argc, char **argv) {
 
         const double c_re = mode == JULIA_MODE ? tmp1 : 0;
         const double c_im = mode == JULIA_MODE ? tmp2 : 0;
-        const double d;
-        const char *name;
-      
+    
         // fscanf(file, "%d", d);
         // fscanf(file, "%s", name);
 
