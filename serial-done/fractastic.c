@@ -126,7 +126,7 @@ int main(int argc, char **argv) {
                 fractal[row][col] = color;
             }
         }
-		draw_fractal(fractal, name, width, height);
+		draw_fractal(fractal, width, height);
         return 0;
     }
 }
