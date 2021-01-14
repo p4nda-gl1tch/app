@@ -45,7 +45,7 @@ int main(int argc, char **argv) {
         FILE *file = fopen(in_filename, "r");
 
         char *mode_sel;
-        fscanf(file, "%d", mode_sel);
+        fscanf(file, "%c", mode_sel);
         if (strcmp(mode_sel, "J") == 0) {
             mode = JULIA_MODE;
         } else if (strcmp(mode_sel, "M") == 0) {
@@ -74,7 +74,7 @@ int main(int argc, char **argv) {
       
         double tmp1, tmp2;
 
-        fscanf(file, "%d %d %d %d %d %d %d %d %f %f %d", width, height, x_min, x_max, y_min, y_max, max_iterations, color_multiplier, tmp1, tmp2, d);
+        fscanf(file, "%lf %lf %lf %lf %lf %lf %lf %lf %lf %lf %d", width, height, x_min, x_max, y_min, y_max, max_iterations, color_multiplier, tmp1, tmp2, d);
         printf("%d %d %d %d %d %d %d %d %f %f %d", width, height, x_min, x_max, y_min, y_max, max_iterations, color_multiplier, tmp1, tmp2, d);
 
         const double c_re = mode == JULIA_MODE ? tmp1 : 0;
