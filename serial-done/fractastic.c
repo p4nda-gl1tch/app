@@ -48,12 +48,14 @@ int main(int argc, char **argv) {
 
         char *mode_sel;
         fscanf(file, "%c", mode_sel);
-        if (strcmp(mode_sel, "J") == 0) {
-            mode = JULIA_MODE;
-            printf("julia");
-        } else if (strcmp(mode_sel, "M") == 0) {
-            mode = MANDELBROT_MODE;
-        }
+        printf("%s", mode_sel);
+    }
+        // if (strcmp(mode_sel, "J") == 0) {
+        //     mode = JULIA_MODE;
+        //     printf("julia");
+        // } else if (strcmp(mode_sel, "M") == 0) {
+        //     mode = MANDELBROT_MODE;
+        // }
 
     //     if (mode == UNKNOWN_MODE) {
     //         fprintf(stderr, "Unrecognized mode from config file");
@@ -132,4 +134,4 @@ int main(int argc, char **argv) {
 		// draw_fractal(fractal, width, height);
         return 0;
     }
-// }
+}
