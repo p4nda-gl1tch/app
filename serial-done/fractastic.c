@@ -16,7 +16,7 @@
 void draw_fractal(int **fractal, int width, int height){
     int i, j;
     printf("in draw");
-    FILE *f = fopen("out-julia", "w");
+    FILE *f = fopen("out", "w");
 
     fprintf(f, "P3 %d %d 255\n", width, height);
 

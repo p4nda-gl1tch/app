@@ -54,10 +54,11 @@ typedef struct {
     int iterations, color;
 } pthread_argv_t;
 
-void draw_fractal(int **fractal, char *name, int width, int height) {
-    int i, j;
 
-    FILE *f = fopen(name, "w");
+void draw_fractal(int **fractal, int width, int height){
+    int i, j;
+    printf("in draw");
+    FILE *f = fopen("out", "w");
 
     fprintf(f, "P3 %d %d 255\n", width, height);
 
@@ -148,24 +149,28 @@ int main(int argc, char **argv) {
         fprintf(stderr, "Usage: %s [J/M] [options]\n", argv[0]);
         return 1;
     } else {
-        p_argv.mode = UNKNOWN_MODE;
-
-        if (strcmp(argv[1], "J") == 0) {
-            p_argv.mode = JULIA_MODE;
-        } else if (strcmp(argv[1], "M") == 0) {
-            p_argv.mode = MANDELBROT_MODE;
+        int mode = UNKNOWN_MODE;
+        
+        
+        printf("%s \n", argv[1]);
+        if (mode_sel == 0) {
+            mode = JULIA_MODE;
+            printf("julia");
+        } else if (mode_sel == 1) {
+            mode = MANDELBROT_MODE;
         }
 
-        if (p_argv.mode == UNKNOWN_MODE) {
-            fprintf(stderr, "Unrecognized mode \"%s\"", argv[1]);
+        if (mode == UNKNOWN_MODE) {
+            fprintf(stderr, "Unrecognized mode from config file");
             return 2;
-        } else if (p_argv.mode == JULIA_MODE && argc != 17) {
-            fprintf(stderr, "Usage: %s J [width] [height] [x_min] [x_max] [y_min] [y_max] [max_iterations] [color_multiplier] [c_re] [c_im] [d] [NUMBER_OF_THREADS]\n", argv[0]);
+        } else if (mode == JULIA_MODE && argc != 2) {
+            fprintf(stderr, "Usage: %s config file\n", argv[0]);
             return 3;
-        } else if (p_argv.mode == MANDELBROT_MODE && argc != 15) {
-            fprintf(stderr, "Usage: %s M [width] [height] [x_min] [x_max] [y_min] [y_max] [max_iterations] [color_multiplier] [d] [NUMBER_OF_THREADS]\n", argv[0]);
+        } else if (mode == MANDELBROT_MODE && argc != 2) {
+            fprintf(stderr, "Usage: %s config file\n", argv[0]);
             return 4;
         }
+
         int arg = 2;
 
         p_argv.width = strtol(argv[arg++], NULL, 0);

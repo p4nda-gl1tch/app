@@ -15,7 +15,7 @@
 void draw_fractal(int *fractal, char *name, int width, int height) {
     int i, j;
 
-    FILE *f = fopen(name, "w");
+    FILE *f = fopen("out", "w");
 
     fprintf(f, "P3 %d %d 255\n", width, height);
 
@@ -43,6 +43,26 @@ int main(int argc, char **argv) {
     struct timeval t1, t2;
     double elapsedTime;
 
+    int width, height; 
+
+    int mode_sel;
+    int max_iterations, color_multiplier; 
+
+    int x_min;
+    int x_max;
+    int y_min;
+    int y_max;
+    int d;
+    int tmp2;
+    double tmp1;
+
+    in_filename = argv[1];
+    FILE *file = fopen(in_filename, "r");
+    printf("%s \n", argv[1]);
+
+    // fscanf(file, "%d %d %d %lf %lf %lf %lf %lf %d %d %lf %lf %lf ", &mode_sel, &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
+    fscanf(file, "%d %d %d %d %d %d %d %d %lf %d %d", &mode_sel, &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
+
     if (rank == 0) {
         gettimeofday(&t1, NULL);
     }
@@ -53,37 +73,26 @@ int main(int argc, char **argv) {
     } else {
         int mode = UNKNOWN_MODE;
 
-        if (strcmp(argv[1], "J") == 0) {
+    if (mode_sel == 0) {
             mode = JULIA_MODE;
-        } else if (strcmp(argv[1], "M") == 0) {
+            printf("julia");
+        } else if (mode_sel == 1) {
             mode = MANDELBROT_MODE;
         }
 
         if (mode == UNKNOWN_MODE) {
-            fprintf(stderr, "Unrecognized mode \"%s\"", argv[1]);
+            fprintf(stderr, "Unrecognized mode from config file");
             return 2;
-        } else if (mode == JULIA_MODE && argc != 14) {
-            fprintf(stderr, "Usage: %s J [width] [height] [x_min] [x_max] [y_min] [y_max] [max_iterations] [color_multiplier] [c_re] [c_im] [d]\n", argv[0]);
+        } else if (mode == JULIA_MODE && argc != 2) {
+            fprintf(stderr, "Usage: %s config file\n", argv[0]);
             return 3;
-        } else if (mode == MANDELBROT_MODE && argc != 12) {
-            fprintf(stderr, "Usage: %s M [width] [height] [x_min] [x_max] [y_min] [y_max] [max_iterations] [color_multiplier] [d]\n", argv[0]);
+        } else if (mode == MANDELBROT_MODE && argc != 2) {
+            fprintf(stderr, "Usage: %s config file\n", argv[0]);
             return 4;
         }
-
-        int arg = 2;
-
-        const int width = strtol(argv[arg++], NULL, 0);
-        const int height = strtol(argv[arg++], NULL, 0);
-        const double x_min = strtod(argv[arg++], NULL);
-        const double x_max = strtod(argv[arg++], NULL);
-        const double y_min = strtod(argv[arg++], NULL);
-        const double y_max = strtod(argv[arg++], NULL);
-        const int max_iterations = strtol(argv[arg++], NULL, 0);
-        const int color_multiplier = strtol(argv[arg++], NULL, 0);
-
-        const double c_re = mode == JULIA_MODE ? strtod(argv[arg++], NULL) : 0;
-        const double c_im = mode == JULIA_MODE ? strtod(argv[arg++], NULL) : 0;
-        const double d = strtod(argv[arg++], NULL);
+        
+        const double c_re = mode == JULIA_MODE ? tmp1 : 0;
+        const double c_im = mode == JULIA_MODE ? tmp2 : 0;
 
         const double x_step = (x_max - x_min) / width;
         const double y_step = (y_max - y_min) / height;
@@ -183,7 +192,7 @@ int main(int argc, char **argv) {
                 free(fr);
             }
 
-            draw_fractal(fractal_as_vector, argv[arg++], width, height);
+            draw_fractal(fractal_as_vector, width, height);
 
             gettimeofday(&t2, NULL);
             elapsedTime = (t2.tv_sec - t1.tv_sec) * 1000.0;

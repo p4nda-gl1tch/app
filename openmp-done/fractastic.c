@@ -34,43 +34,65 @@ int main(int argc, char **argv) {
 
     int row, col, i;
 
+    int width, height; 
+
+    int mode_sel;
+    int max_iterations, color_multiplier; 
+    
+    // double x_min;
+    // double x_max;
+    // double y_min;
+    // double y_max;
+    // double d;
+    // double tmp1, tmp2;
+
+
+    int x_min;
+    int x_max;
+    int y_min;
+    int y_max;
+    int d;
+    int tmp2;
+    double tmp1;
+
+    in_filename = argv[1];
+    FILE *file = fopen(in_filename, "r");
+    printf("%s \n", argv[1]);
+
+    // fscanf(file, "%d %d %d %lf %lf %lf %lf %lf %d %d %lf %lf %lf ", &mode_sel, &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
+    fscanf(file, "%d %d %d %d %d %d %d %d %lf %d %d", &mode_sel, &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
+
+    printf("%s \n", argv[1]);
     if (argc < 2) {
         fprintf(stderr, "Usage: %s [J/M] [options]\n", argv[0]);
         return 1;
     } else {
         int mode = UNKNOWN_MODE;
-
-        if (strcmp(argv[1], "J") == 0) {
+        
+        
+        printf("%s \n", argv[1]);
+        if (mode_sel == 0) {
             mode = JULIA_MODE;
-        } else if (strcmp(argv[1], "M") == 0) {
+            printf("julia");
+        } else if (mode_sel == 1) {
             mode = MANDELBROT_MODE;
         }
 
         if (mode == UNKNOWN_MODE) {
-            fprintf(stderr, "Unrecognized mode \"%s\"", argv[1]);
+            fprintf(stderr, "Unrecognized mode from config file");
             return 2;
-        } else if (mode == JULIA_MODE && argc != 14) {
-            fprintf(stderr, "Usage: %s J [width] [height] [x_min] [x_max] [y_min] [y_max] [max_iterations] [color_multiplier] [c_re] [c_im] [d]\n", argv[0]);
+        } else if (mode == JULIA_MODE && argc != 2) {
+            fprintf(stderr, "Usage: %s config file\n", argv[0]);
             return 3;
-        } else if (mode == MANDELBROT_MODE && argc != 12) {
-            fprintf(stderr, "Usage: %s M [width] [height] [x_min] [x_max] [y_min] [y_max] [max_iterations] [color_multiplier] [d]\n", argv[0]);
+        } else if (mode == MANDELBROT_MODE && argc != 2) {
+            fprintf(stderr, "Usage: %s config file\n", argv[0]);
             return 4;
         }
 
-        int arg = 2;
 
-        const int width = strtol(argv[arg++], NULL, 0);
-        const int height = strtol(argv[arg++], NULL, 0);
-        const double x_min = strtod(argv[arg++], NULL);
-        const double x_max = strtod(argv[arg++], NULL);
-        const double y_min = strtod(argv[arg++], NULL);
-        const double y_max = strtod(argv[arg++], NULL);
-        const int max_iterations = strtol(argv[arg++], NULL, 0);
-        const int color_multiplier = strtol(argv[arg++], NULL, 0);
+        const double c_re = mode == JULIA_MODE ? tmp1 : 0;
+        const double c_im = mode == JULIA_MODE ? tmp2 : 0;
 
-        const double c_re = mode == JULIA_MODE ? strtod(argv[arg++], NULL) : 0;
-        const double c_im = mode == JULIA_MODE ? strtod(argv[arg++], NULL) : 0;
-        const double d = strtod(argv[arg++], NULL);
 
         const double x_step = (x_max - x_min) / width;
         const double y_step = (y_max - y_min) / height;
@@ -118,7 +140,8 @@ int main(int argc, char **argv) {
                 fractal[row][col] = color;
             }
         }
-		draw_fractal(fractal, argv[arg++], width, height);
+        draw_fractal(fractal, width, height);
+
         return 0;
     }
 }
