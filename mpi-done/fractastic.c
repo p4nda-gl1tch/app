@@ -11,7 +11,7 @@
 #define JULIA_MODE 1
 #define MANDELBROT_MODE 2
 
-void draw_fractal(int *fractal, int width, int height){
+void draw_fractal(int **fractal, int width, int height){
     int i, j;
     FILE *f = fopen("mpi", "w");
 
@@ -234,7 +234,7 @@ int main(int argc, char **argv) {
                 free(fr);
             }
 
-            draw_fractal(fractal_as_vector, width, height);
+            draw_fractal(*fractal_as_vector, width, height);
 
             gettimeofday(&t2, NULL);
             elapsedTime = (t2.tv_sec - t1.tv_sec) * 1000.0;
