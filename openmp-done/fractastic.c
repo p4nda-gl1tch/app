@@ -16,7 +16,7 @@
 void draw_fractal(int **fractal, int width, int height){
     int i, j;
 
-    FILE *f = fopen(name, "w");
+    FILE *f = fopen("mpi-out", "w");
 
     fprintf(f, "P3 %d %d 255\n", width, height);
 
@@ -61,7 +61,7 @@ int main(int argc, char **argv) {
     printf("%s \n", argv[1]);
 
     // fscanf(file, "%d %d %d %lf %lf %lf %lf %lf %d %d %lf %lf %lf ", &mode_sel, &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
-    fscanf(file, "%d %d %d %d %d %d %d %d %lf %d %d", &mode_sel, &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
+    fscanf(file, "%d %d %d %d %d %d %d %d %lf %d %d %d", &mode_sel, &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
 
     printf("%s \n", argv[1]);
     if (argc < 2) {
