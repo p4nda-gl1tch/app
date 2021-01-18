@@ -13,7 +13,7 @@
 #define MANDELBROT_MODE 2
 
 
-void draw_fractal(int **fractal, char *name, int width, int height){
+void draw_fractal(int **fractal, int width, int height){
     int i, j;
 
     FILE *f = fopen(name, "w");
@@ -29,6 +29,7 @@ void draw_fractal(int **fractal, char *name, int width, int height){
     fclose(f);
 }
 
+char *in_filename;
 
 int main(int argc, char **argv) {
 
