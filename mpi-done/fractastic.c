@@ -11,7 +11,7 @@
 #define JULIA_MODE 1
 #define MANDELBROT_MODE 2
 
-void draw_fractal(int **fractal, int width, int height){
+void draw_fractal(int *fractal, int width, int height){
     int i, j;
     FILE *f = fopen("mpi", "w");
 
