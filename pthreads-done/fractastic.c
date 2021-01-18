@@ -145,6 +145,36 @@ int main(int argc, char **argv) {
     pthread_t* threads;
     int ret;
 
+
+    int width, height; 
+
+    int mode_sel;
+    int max_iterations, color_multiplier; 
+    
+    // double x_min;
+    // double x_max;
+    // double y_min;
+    // double y_max;
+    // double d;
+    // double tmp1, tmp2;
+
+
+    int x_min;
+    int x_max;
+    int y_min;
+    int y_max;
+    int d;
+    int tmp2;
+    double tmp1;
+
+    in_filename = argv[1];
+    FILE *file = fopen(in_filename, "r");
+    printf("%s \n", argv[1]);
+
+    // fscanf(file, "%d %d %d %lf %lf %lf %lf %lf %d %d %lf %lf %lf ", &mode_sel, &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
+    fscanf(file, "%d %d %d %d %d %d %d %d %lf %d %d", &mode_sel, &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
+
+
     if (argc < 2) {
         fprintf(stderr, "Usage: %s [J/M] [options]\n", argv[0]);
         return 1;
@@ -173,18 +203,21 @@ int main(int argc, char **argv) {
 
         int arg = 2;
 
-        p_argv.width = strtol(argv[arg++], NULL, 0);
-        p_argv.height = strtol(argv[arg++], NULL, 0);
-        p_argv.x_min = strtod(argv[arg++], NULL);
-        p_argv.x_max = strtod(argv[arg++], NULL);
-        p_argv.y_min = strtod(argv[arg++], NULL);
-        p_argv.y_max = strtod(argv[arg++], NULL);
-        p_argv.max_iterations = strtol(argv[arg++], NULL, 0);
-        p_argv.color_multiplier = strtol(argv[arg++], NULL, 0);
 
-        p_argv.c_re = p_argv.mode == JULIA_MODE ? strtod(argv[arg++], NULL) : 0;
-        p_argv.c_im = p_argv.mode == JULIA_MODE ? strtod(argv[arg++], NULL) : 0;
-        p_argv.d = strtod(argv[arg++], NULL);
+        fscanf(file, "%d %d %d %d %d %d %d %d %lf %d %d", &mode_sel, &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
+
+        p_argv.width = width;
+        p_argv.height = height;
+        p_argv.x_min = x_min;
+        p_argv.x_max = x_max;
+        p_argv.y_min = y_min;
+        p_argv.y_max = y_max;
+        p_argv.max_iterations = max_iterations;
+        p_argv.color_multiplier = color_multiplier;
+
+        p_argv.c_re = p_argv.mode == JULIA_MODE ? tmp1 : 0;
+        p_argv.c_im = p_argv.mode == JULIA_MODE ? tmp2 : 0;
+        p_argv.d = d;
 
         p_argv.x_step = (p_argv.x_max - p_argv.x_min) / p_argv.width;
         p_argv.y_step = (p_argv.y_max - p_argv.y_min) / p_argv.height;
@@ -422,7 +455,7 @@ int main(int argc, char **argv) {
             pthread_join(threads[i], NULL);
         }
 
-        draw_fractal(p_argv.fractal, p_argv.width, p_argv.height);
+        draw_fractal(p_argv.fractal p_argv.width, p_argv.height);
 
         return 0;
     }
