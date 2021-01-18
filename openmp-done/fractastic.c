@@ -16,7 +16,7 @@
 void draw_fractal(int **fractal, int width, int height){
     int i, j;
 
-    FILE *f = fopen("mpi-out", "w");
+    FILE *f = fopen("opemmp-out", "w");
 
     fprintf(f, "P3 %d %d 255\n", width, height);
 

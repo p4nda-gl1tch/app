@@ -15,7 +15,7 @@
 void draw_fractal(int *fractal, int width, int height) {
     int i, j;
 
-    FILE *f = fopen("out", "w");
+    FILE *f = fopen("hybrid", "w");
 
     fprintf(f, "P3 %d %d 255\n", width, height);
 

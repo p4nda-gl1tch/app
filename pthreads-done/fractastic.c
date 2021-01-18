@@ -422,7 +422,7 @@ int main(int argc, char **argv) {
             pthread_join(threads[i], NULL);
         }
 
-        draw_fractal(p_argv.fractal, argv[arg++], p_argv.width, p_argv.height);
+        draw_fractal(p_argv.fractal, p_argv.width, p_argv.height);
 
         return 0;
     }
