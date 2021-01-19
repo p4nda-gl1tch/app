@@ -40,14 +40,6 @@ int main(int argc, char **argv) {
     int mode_sel;
     int max_iterations, color_multiplier; 
     
-    // double x_min;
-    // double x_max;
-    // double y_min;
-    // double y_max;
-    // double d;
-    // double tmp1, tmp2;
-
-
     int x_min;
     int x_max;
     int y_min;
@@ -60,8 +52,7 @@ int main(int argc, char **argv) {
     FILE *file = fopen(in_filename, "r");
     printf("%s \n", argv[1]);
 
-    // fscanf(file, "%d %d %d %lf %lf %lf %lf %lf %d %d %lf %lf %lf ", &mode_sel, &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
-    fscanf(file, "%d %d %d %d %d %d %d %d %lf %d %d", &mode_sel, &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
+    fscanf(file, "%d %d %d %d %d %d %d %d %d %lf %d %d", &mode_sel, &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
 
     printf("%s \n", argv[1]);
     if (argc < 2) {
@@ -95,8 +86,6 @@ int main(int argc, char **argv) {
       
     
 
-        // fscanf(file, "%c %d %d ", &width, &height);
-       // printf("%c %lf %lf %lf %lf %lf %lf %lf %lf %lf %lf %d", width, height, x_min, x_max, y_min, y_max, max_iterations, color_multiplier, tmp1, tmp2, d);
 
         const double c_re = mode == JULIA_MODE ? tmp1 : 0;
         const double c_im = mode == JULIA_MODE ? tmp2 : 0;
