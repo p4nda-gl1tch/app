@@ -12,7 +12,7 @@ make clean > /dev/null && make >> compiler_output
 for s in $STATIC
 do
     echo $s >> exec_output_julia
-    { time ./fractastic J 1800 1800 -2 2 -2 2 200 1 -0.4 0.6 2 $NUM_TH C $s output.pnm >> exec_output_julia; } 2>> tmp
+    { time ./fractastic in/julia.in $NUM_TH C $s output.pnm >> exec_output_julia; } 2>> tmp
 done
 cat tmp | grep real | cut -d $'\t' -f 2 > time_julia_chunk.t
 rm tmp
