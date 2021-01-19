@@ -1,4 +1,4 @@
-CC = gcc
+CC = g++
 
 CFLAGS = -g -Wall -O3 -fopenmp
 LDFLAGS = -g -lm -fopenmp
