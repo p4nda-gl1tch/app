@@ -139,6 +139,8 @@ const int MANDELBROT_THRESHOLDS_START[] = {0,561,633,668,703,735,764,792,815,837
 const int MANDELBROT_THRESHOLDS_STOP[] = {561,633,668,703,735,764,792,815,837,858,879,900,921,942,963,985,1008,1036,1066,1098,1134,1172,1264,1800};
 // const int MANDELBROT_THRESHOLDS_THREADS[] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
 
+char *in_filename;
+
 int main(int argc, char **argv) {
 
     pthread_argv_t p_argv;
@@ -167,12 +169,12 @@ int main(int argc, char **argv) {
     int tmp2;
     double tmp1;
 
-    in_filename = argv[1];
     FILE *file = fopen(in_filename, "r");
+    in_filename = argv[1];
+
     printf("%s \n", argv[1]);
 
-    // fscanf(file, "%d %d %d %lf %lf %lf %lf %lf %d %d %lf %lf %lf ", &mode_sel, &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
-    fscanf(file, "%d %d %d %d %d %d %d %d %lf %d %d", &mode_sel, &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
+    fscanf(file, "%d %d %d %d %d %d %d %d %d %lf %d %d", &mode_sel, &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
 
 
     if (argc < 2) {
@@ -204,7 +206,6 @@ int main(int argc, char **argv) {
         int arg = 2;
 
 
-        fscanf(file, "%d %d %d %d %d %d %d %d %lf %d %d", &mode_sel, &width, &height, &x_min, &x_max, &y_min, &y_max, &max_iterations, &color_multiplier, &tmp1, &tmp2, &d);
 
         p_argv.width = width;
         p_argv.height = height;
@@ -214,7 +215,7 @@ int main(int argc, char **argv) {
         p_argv.y_max = y_max;
         p_argv.max_iterations = max_iterations;
         p_argv.color_multiplier = color_multiplier;
-
+	p_argv.mode = mode_sel;
         p_argv.c_re = p_argv.mode == JULIA_MODE ? tmp1 : 0;
         p_argv.c_im = p_argv.mode == JULIA_MODE ? tmp2 : 0;
         p_argv.d = d;
@@ -455,7 +456,7 @@ int main(int argc, char **argv) {
             pthread_join(threads[i], NULL);
         }
 
-        draw_fractal(p_argv.fractal p_argv.width, p_argv.height);
+        draw_fractal(p_argv.fractal, p_argv.width, p_argv.height);
 
         return 0;
     }

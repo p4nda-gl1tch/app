@@ -1,0 +1,4 @@
+gcc -g -Wall -O3 -fopenmp   -c -o fractastic.o fractastic.c
+gcc -g -Wall -O3 -fopenmp   -c -o ppm.o ppm.c
+gcc -g -Wall -O3 -fopenmp   -c -o fractal.o fractal.c
+gcc -g -lm -fopenmp  fractastic.o ppm.o fractal.o   -o fractastic
